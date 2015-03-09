@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
+
     protect_from_forgery with: :exception
 
   
    private
    
-	   def authenticate_user
-      	render_403 unless params[:current_user] 
+	   def authenticate_user!
+      	   render_403 unless user_signed_in?
        end
 
 	   def render_404
