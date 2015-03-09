@@ -1,0 +1,11 @@
+<h1>Edit item</h1>
+
+<%= form_for @item do |f| %> <!--@item->def new-->
+	<!--form_for створює форму для Item. |f|-це form -->
+		<%= render partial: "parshal/email", locals: { f: f } %>
+	<!--f. це з(form_for Item.new do |f|)-->
+		<p><%= f.submit "Оновити товар" %></p>
+		<p class="link"><%= link_to 'Back', items_path %></p>
+
+
+<% end  %>

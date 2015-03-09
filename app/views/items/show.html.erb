@@ -1,0 +1,8 @@
+<h1><%= @item.name %></h1>
+<ul>
+	<li>Ціна:<%= @item.price %>$</li>
+	<li> Вага: <%= @item.weight %> kg</li>
+	<li> Опиc: <%= @item.description %> </li>
+	 <p><%= link_to 'Edit', edit_item_path %></p>
+     <p><%= link_to 'Back', items_path %></p>
+</ul>

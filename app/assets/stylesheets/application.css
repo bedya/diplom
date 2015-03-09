@@ -1,0 +1,44 @@
+body {
+	position: relative;
+	background-color:#ECE5E2;
+	font-family: Consolas, sans;
+	font-size: 18px;
+}
+a {
+	text-decoration: none;
+	color:#FF0101;
+	opacity: .7;
+}
+/*----------------------------*/
+   @-webkit-keyframes flash {
+    0% {opacity: 0;} 
+    100% {opacity: 1;}
+   }
+
+   .flash {
+    -webkit-animation-name: flash;
+    -webkit-animation-duration: 2s;
+            animation-duration: 2s;
+            animation-name: flash;
+   }
+
+/*----------------------------*/
+.link a:hover {
+	transition: all .3s ease-in-out;
+	opacity: 1;
+}
+/*----------------------------*/
+   @-webkit-keyframes bed {
+    0% {margin-left:-150px;} 
+    100% {margin-left: 0px}
+}
+
+.bed {
+ -webkit-animation-name: bed;
+ -webkit-animation-duration: 2s;
+         animation-name: bed;
+         animation-duration: 2s;
+}
+
+
+
