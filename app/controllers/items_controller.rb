@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
 
 
-	#фільтри.при повторені коду.приватність(admin)
 	before_filter :find_item,  only: [:show, :upvote, :edit, :update, :destroy]
+  #фільтри.при повторені коду.приватність(admin)
 	#before_filter :check_if_admin, only: [:show, :new, :edit, :update, :destroy]
   before_filter :authenticate_user!, :only => [:edit, :show, :new, :destroy]
  

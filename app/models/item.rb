@@ -14,5 +14,3 @@ class Item < ActiveRecord::Base
     has_many :carts, through: :positions
     has_many :coments, as: :commentable #робить модель коментованою
 end
-
-

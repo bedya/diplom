@@ -1,8 +1,7 @@
 body {
 	position: relative;
 	background-color:#ECE5E2;
-	font-family: Consolas, sans;
-	font-size: 18px;
+  font: 16px Consolas, serif;
 }
 a {
 	text-decoration: none;
@@ -27,18 +26,9 @@ a {
 	transition: all .3s ease-in-out;
 	opacity: 1;
 }
-/*----------------------------*/
-   @-webkit-keyframes bed {
-    0% {margin-left:-150px;} 
-    100% {margin-left: 0px}
-}
+@media screen and (max-width: 700px) {
+  table {
+    font-size: 14px;  
+  }
 
-.bed {
- -webkit-animation-name: bed;
- -webkit-animation-duration: 2s;
-         animation-name: bed;
-         animation-duration: 2s;
-}
-
-
-
+} 
