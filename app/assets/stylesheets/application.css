@@ -8,20 +8,7 @@ a {
 	color:#FF0101;
 	opacity: .7;
 }
-/*----------------------------*/
-   @-webkit-keyframes flash {
-    0% {opacity: 0;} 
-    100% {opacity: 1;}
-   }
 
-   .flash {
-    -webkit-animation-name: flash;
-    -webkit-animation-duration: 2s;
-            animation-duration: 2s;
-            animation-name: flash;
-   }
-
-/*----------------------------*/
 .link a:hover {
 	transition: all .3s ease-in-out;
 	opacity: 1;
@@ -32,3 +19,11 @@ a {
   }
 
 } 
+.adminPanel{
+	font: 18px Arial, sans-serif;
+	color: #fff;
+	padding-top: 10px;
+	width: 600px;
+	height: 40px;
+	background-color: #123484;
+}

@@ -1,39 +1,56 @@
- <div class="flash">
-  <% if user_signed_in? %>
-    <span>Здравствуйте, <%= current_user.email %></span>
-    <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
-<% else %>
-    <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
-<% end %>
-<div id="center">
-<table cellspacing="3" cellpadding="3">
-<tbody align="center"><tr><th colspan="8"><h2>Items</h2></th></tr>
-  <tr>
-  	<th>ID</th>
-       <th>Name</th>
-    	<th>Price</th>
-    		<th>Weight</th>
-    	<th>Description</th>  
-  	</tr>
+<div class="flash">
 
-  <% @items.each do |i| %> <!--each виводить всі аргументи-->
-	<tr>
-		<td><%= i.id %></td>
-			<td><%= link_to i.name, item_path(i)%></td>
-				<td><%= i.price%></td>
-					<td><%= i.weight%></td>
-				<td><%= urls_to_links(urls_to_images(i.description))%></td>
-			<td><%= link_to "Del", i , method: :delete, :data => { :confirm => 'Are u sure?' } %></td>	 
-		 <td><%= link_to 'Edit', edit_item_path(i) %></td>
-	  <td>Рейтинг: <%= i.votes_count %>, <%= link_to "like", upvote_item_path(i) %> </td>
-	</tr>
-<!-- item_path допоміжний хелпер..мутить прямі силки до елеметів і-->
-<% end %>
-<tr><th colspan="8"><%= link_to 'Show more expensive 500$', expensive_items_path %></th></tr>
-</tbody>
-	</table></div>
-		<h2 class="link"><%= link_to 'Add new item', new_item_path %></h2>
+	<div id="center">
+		<table cellspacing="3" cellpadding="3">
+			<tbody align="center">
+				<tr>
+					<th colspan="8">
+						<h2>Items</h2>
+					</th>
+				</tr>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Weight</th>
+					<th>Description</th>
+				</tr>
+
+				<% @items.each do |i| %>
+				<!--each виводить всі аргументи-->
+				<tr>
+					<td>
+						<%= i.id %></td>
+					<td>
+						<%= link_to i.name, item_path(i)%></td>
+					<td>
+						<%= i.price%></td>
+					<td>
+						<%= i.weight%></td>
+					<td>
+						<%= urls_to_links(urls_to_images(i.description))%></td>
+					<td>
+						<%= link_to "Del", i , method: :delete, :data =>{ :confirm => 'Are u sure?' } %></td>
+					<td>
+						<%= link_to 'Edit', edit_item_path(i) %></td>
+					<td>
+						Рейтинг:
+						<%= i.votes_count %>
+						,
+						<%= link_to "like", upvote_item_path(i) %></td>
+				</tr>
+				<!-- item_path допоміжний хелпер..мутить прямі силки до елеметів і-->
+				<% end %>
+				<tr>
+					<th colspan="8">
+						<%= link_to 'Show more expensive 500$', expensive_items_path %></th>
+				</tr>
+			</tbody>
+		</table>
 	</div>
+	<h2 class="link">
+		<%= link_to 'Add new item', new_item_path %></h2>
+</div>
 
-<!--<%=  image_tag("aventador900.jpg", alt: "Rails") %>-->
-
+<!--<%=  image_tag("aventador900.jpg", alt: "Rails") %>
+-->

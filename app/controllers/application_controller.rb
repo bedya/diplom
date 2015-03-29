@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
    private
    
-	   def authenticate_user!
+	    def authenticate_user!
       	   render_403 unless user_signed_in?
        end
 
@@ -17,9 +17,9 @@ class ApplicationController < ActionController::Base
 	   	 render "public/403"
 	   end
 
-	   #def check_if_admin #(before_filter)
-    	 #render_403 unless params[:admin]
-       #end
+	   def check_if_admin #(before_filter)
+    	 render_403 unless params[:admin]
+       end
 
        def after_sign_in_path_for(resource)
   		  items_path
