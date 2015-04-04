@@ -1,10 +1,50 @@
-<div class="flash">
-<h1><%= @item.name %></h1>
-<ul>
-	<li>Ціна:<%= @item.price %>$</li>
-	<li> Вага: <%= @item.weight %> kg</li>
-	<li> Опиc: <%= urls_to_links(urls_to_images(@item.description)) %> </li>
-	 <p><%= link_to 'Edit', edit_item_path %></p>
-     <p><%= link_to 'Back', items_path %></p>
-</ul>
-<div class="flash">
+
+<%= link_to 'Back', items_path %>
+<table>
+	<tbody align="center">
+		<tr>
+			<th colspan="8">
+				<h2>
+					<%= @item.name %></h2>
+			</th>
+		</tr>
+		<tr>
+			<th>ID</th>
+
+			<th>Price</th>
+			<th>Weight</th>
+			<th>Description</th>
+			<th></th>
+			<th></th>
+			<th>Created_at</th>
+			<th>Rating</th>
+
+		</tr>
+
+		<tr>
+			<td>
+				<%= @item.id %></td>
+
+			<td>
+				<%= @item.price%></td>
+			<td>
+				<%= @item.weight%></td>
+			<td>
+				<%= urls_to_links(urls_to_images(@item.description))%></td>
+
+			<td>
+				<%= link_to 'Edit', edit_item_path(@item) %></td>
+			<td>
+				<%= link_to "Del", @item , method: :delete, :data =>{ :confirm => 'Are u sure?' } %></td>
+
+			<td>
+				<%= @item.created_at.strftime("%b %d, %Y, %T") %></td>
+			<td>
+				<%= @item.votes_count %>
+				,
+				<%= link_to "like", upvote_item_path(@item) %></td>
+
+		</tr>
+
+	</tbody>
+</table>

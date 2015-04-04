@@ -1,25 +1,11 @@
-<html>
-<head>
-	<title>Store</title>
-</head>
-	<body>
-		<% if user_signed_in? %>
-	<span>
-		Hello,
-		<%= current_user.email %></span>
-	<%= link_to 'Sign out', destroy_user_session_path, :method =>
-	:delete %>
-	<% else %>
-	<%= link_to 'Sign in', new_user_session_path %>
-	или
-	<%= link_to 'Registration', new_user_registration_path %>
-	<% end %>
+<br>
+<%= link_to 'Back', items_path %>
 
 		<table>
 			<tbody align="center">
 				<tr>
 					<th colspan="9">
-						<h2>Items</h2>
+						<h2>Popular items</h2>
 					</th>
 				</tr>
 				<tr>
@@ -61,29 +47,8 @@
 						,
 						<%= link_to "like", upvote_item_path(i) %></td>
 						</tr>
-				<!-- item_path допоміжний хелпер..мутить прямі силки до елеметів і-->
+				
 				<% end %>
-				<tr>
-					<th colspan="9">
-						<%= link_to 'Show more expensive 1000$', expensive_items_path %></th>
-				</tr>
-				<tr>
-					<th colspan="9">
-						<%= link_to 'Show popular items ', popul_items_path%></th>
-				</tr>
-				<tr>
-					<th colspan="9">
-						<%= link_to 'Show new items ', nitem_items_path %></th>
-				</tr>
+				
 			</tbody>
 		</table>
-		
-
-	<h2 class="link">
-		<%= link_to 'Add new item', new_item_path %></h2>
-
-
-<!--<%=  image_tag("aventador900.jpg", alt: "Rails") %>
--->
-</body>
-</html>

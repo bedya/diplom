@@ -7,10 +7,19 @@ class ItemsController < ApplicationController
   before_filter :authenticate_user!, :only => [:edit, :show, :new, :destroy]
  
    def index
-	  	@items = Item.all
+       @items = Item
+	  	 @items = @items.where("price >= ?", params[:price_from])       if params[:price_from]
+       @items = @items.where("created_at >= ?", 1.day.ago)            if params[:today]
+       @items = @items.where("votes_count >= ?", params[:votes_from]) if params[:votes_from]
+       @items = @items.order("votes_count DESC", "price")#такий формат запису для захисту від взлому
 	  	#render text: @items.map { |i| "#{i.name} #{i.price} #{i.weight}"}.
 	  	#join("<br/>")
     end
+   
+    # method WHERE (SQL запроси)
+    #  def index
+    #   @items = Item.where('price >= 1500 OR votes_count = 3')
+    # end
 
    #/items/1 GET
    def show #read
@@ -29,7 +38,7 @@ class ItemsController < ApplicationController
    	    #render text: " #{@item.id}: #{@item.name} #{!@item.new_record?}"перевіряє чи є запис в БД
         @item = Item.create(item_params)
         if @item.errors.empty?
-     	   redirect_to action: "index" 
+     	   redirect_to item_path (@item) 
      	  else
      	  render "new"
      	end
@@ -50,8 +59,10 @@ class ItemsController < ApplicationController
    		#@item = Item.find(params[:id]) (before_filter)
    		@item.update_attributes(item_params)
       if @item.errors.empty?
+        flash[:success] = "Item successfully updated!"
      	   redirect_to item_path(@item)
      	else
+        flash.now[:error] = "You made mistake!"
      	  render "edit"
      	end
    end
@@ -70,9 +81,22 @@ class ItemsController < ApplicationController
    end
 
    def expensive
-   		@items = Item.where("price>500")
+   		@items = Item.where("price>1000")
    		render "expensive"
    end
+
+   def popul
+     @items = Item.where("votes_count >= 3").order("votes_count DESC", "price")
+     render "popul"
+   end
+
+   def nitem
+
+    @items = Item.where("created_at >= ?", 1.day.ago)  if params[:today]
+    render "nitem"
+
+   end
+
 
    private
 

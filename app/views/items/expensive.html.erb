@@ -1,28 +1,54 @@
-<div class="flash">
+<br>
 <%= link_to 'Back', items_path %>
 
-<table cellspacing="5" cellpadding="5">
-<tbody align="center"><tr><th colspan="8"><h2>Items</h2></th></tr>
-  <tr>
-  	<th>ID</th>
-       <th>Name</th>
-    	<th>Price</th>
-    		<th>Weight</th>
-    	<th>Description</th>  
-  	</tr>
-  	
-  <% @items.each do |i| %> <!--each виводить всі аргументи-->
-			<tr>
-				<td><%= i.id %></td>
-					<td><%= link_to i.name, item_path(i)%></td>
-						<td><%= i.price%></td>
-							<td><%= i.weight%></td>
-						<td><%= i.description%></td>
-					<td><%= link_to "Del", i , method: :delete, :data => { :confirm => 'Are u sure?' } %></td>	 
-				 <td><%= link_to 'Edit', edit_item_path(i) %></td>
-			  <td>Рейтинг: <%= i.votes_count %>, <%= link_to "like", upvote_item_path(i) %> </td>
-			</tr>
-		<% end %>
- 	</tbody>
-</table>
-</div>
+		<table>
+			<tbody align="center">
+				<tr>
+					<th colspan="9">
+						<h2>Expensive items</h2>
+					</th>
+				</tr>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Weight</th>
+					<th>Description</th>
+					<th></th>
+					<th></th>
+					<th>Created_at</th>
+					<th>Rating</th>
+
+				</tr>
+
+				<% @items.each do |i| %>
+				<!--each виводить всі аргументи-->
+				
+				<tr>
+					<td>
+						<%= i.id %></td>
+					<td>
+						<%= link_to i.name, item_path(i)%></td>
+					<td>
+						<%= i.price%></td>
+					<td>
+						<%= i.weight%></td>
+					<td>
+						<%= urls_to_links(urls_to_images(i.description))%></td>
+					<td>
+						<%= link_to "Del", i , method: :delete, :data =>{ :confirm => 'Are u sure?' } %></td>
+					<td>
+						<%= link_to 'Edit', edit_item_path(i) %></td>
+
+
+						<td><%= i.created_at.strftime("%b %d, %Y, %T") %></td>
+					<td>
+						<%= i.votes_count %>
+						,
+						<%= link_to "like", upvote_item_path(i) %></td>
+						</tr>
+				
+				<% end %>
+				
+			</tbody>
+		</table>

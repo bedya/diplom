@@ -1,29 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Store</title>
-	<div class="flash">
-
-    <!-- буде підгружатись на кожній сторінці -->
-	<% if user_signed_in? %>
-	<span>
-		Здравствуйте,
-		<%= current_user.email %></span>
-	<%= link_to 'Выйти', destroy_user_session_path, :method =>
-	:delete %>
-	<% else %>
-	<%= link_to 'Войти', new_user_session_path %>
-	или
-	<%= link_to 'Зарегистрироваться', new_user_registration_path %>
-	<% end %>
-	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' =>
-	true %>
-	<%= javascript_include_tag 'application', 'data-turbolinks-track' =>
-	true %>
-	<%= csrf_meta_tags %>
-</div>
-	</head>
+  <title>Store</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
 <body>
+<p style="color: red;"><%= flash[:error] %></p>
+<p style="color: green;"><%= flash[:success] %></p>
 
-	<%= yield %></body>
+<%= yield %>
+
+</body>
 </html>
